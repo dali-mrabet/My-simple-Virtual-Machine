@@ -249,9 +249,9 @@ void VIRTUAL_MACHINE::RaiseException(int Exception )const
                                             "\nError : INVALID_RETURN_ADDRESS at address : %x \n"
                                           } ;
 
-    // fprintf(stderr,ErrorMessages[Exception],(Processor->BaseAddr  + *(Processor->ProgramCounter) ));
-    // system("pause");
-    // exit(-1);
+     fprintf(stderr,ErrorMessages[Exception],(Processor->BaseAddr  + *(Processor->ProgramCounter) ));
+     system("pause");
+     exit(-1);
 
 }
 
