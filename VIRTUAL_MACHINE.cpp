@@ -51,19 +51,19 @@ __declspec(allocate(".CRT$XLB")) PIMAGE_TLS_CALLBACK Callbacks[]= {ThreadLocalSt
 	 __asm xor eax , eax          \
 	 __asm xor ecx , ecx          \
 	 __asm rdtsc                  \
-     __asm mov ebx , eax          \
-	 __asm mov delta , edi  	  \
-     __asm nop                    \
-     __asm sub edx , ebx          \
-     __asm nop                    \
+         __asm mov ebx , eax          \
+	 __asm mov delta , edi        \
+         __asm nop                    \
+         __asm sub edx , ebx          \
+         __asm nop                    \
 	 __asm rdtsc                  \
 	 __asm sub eax , ebx          \
 	 __asm mov delta , eax        \
 	 __asm popa                   \
-}				                  \
-   if(delta >= 0x100)             \
-   exit(-1);                      \
-   else 		                  \
+}				      \
+   if(delta >= 0x100)                 \
+   exit(-1);                          \
+   else 		              \
    delta = 0 ;
 
 
