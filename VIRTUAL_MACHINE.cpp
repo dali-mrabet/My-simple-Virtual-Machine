@@ -22,22 +22,22 @@ static int PC = 0 ;
 void NTAPI ThreadLocalStorage(PVOID Module,DWORD Reason,PVOID Context)
 {
 
-	typedef NTSTATUS (NTAPI * FNtQueryInformationProcess)(HANDLE hProcess,ULONG InfoClass,PVOID Buffer,ULONG Length,PULONG ReturnLength);
-  	  HANDLE isdebugged, MyVM = GetCurrentProcess();
+    typedef NTSTATUS (NTAPI * FNtQueryInformationProcess)(HANDLE hProcess,ULONG InfoClass,PVOID Buffer,ULONG Length,PULONG ReturnLength);
+    HANDLE isdebugged, MyVM = GetCurrentProcess();
 
-     HMODULE ntdll = LoadLibraryA("ntdll.dll");
+    HMODULE ntdll = LoadLibraryA("ntdll.dll");
 
-       FNtQueryInformationProcess myNtQueryInformationProcess = (FNtQueryInformationProcess  )GetProcAddress(ntdll,"NtQueryInformationProcess");
+    FNtQueryInformationProcess myNtQueryInformationProcess = (FNtQueryInformationProcess  )GetProcAddress(ntdll,"NtQueryInformationProcess");
 
-	   myNtQueryInformationProcess(MyVM,7,&isdebugged,sizeof(HANDLE),NULL);
+    myNtQueryInformationProcess(MyVM,7,&isdebugged,sizeof(HANDLE),NULL);
 
-	   if(isdebugged == (HANDLE)-1)
+    if(isdebugged == (HANDLE)-1)
 
-		  ExitProcess(-1);
+        ExitProcess(-1);
 }
 
-__declspec(allocate(".CRT$XLB")) PIMAGE_TLS_CALLBACK Callbacks[]={ThreadLocalStorage,NULL};
-   
+__declspec(allocate(".CRT$XLB")) PIMAGE_TLS_CALLBACK Callbacks[]= {ThreadLocalStorage,NULL};
+
 
 
 #define __TIMING_CHECK__ __asm    \
