@@ -249,7 +249,7 @@ public  :
 
     void show()
     {
-        printf("\n EFLAGS : %x\n" ,this->Processor->Regs->SP );
+        printf("\n EFLAGS : %x\n" ,this->Processor->EFLAGS );
     }
 
 
