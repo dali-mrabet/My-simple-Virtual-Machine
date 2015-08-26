@@ -18,7 +18,7 @@ static int PC = 0 ;
 #pragma comment(linker,"/include:__tls_used")
 #pragma section(".CRT$XLB",read)
 
-/*
+
 void NTAPI ThreadLocalStorage(PVOID Module,DWORD Reason,PVOID Context)
 {
 
@@ -37,7 +37,7 @@ void NTAPI ThreadLocalStorage(PVOID Module,DWORD Reason,PVOID Context)
 }
 
 __declspec(allocate(".CRT$XLB")) PIMAGE_TLS_CALLBACK Callbacks[]={ThreadLocalStorage,NULL};
-   */
+   
 
 
 #define __TIMING_CHECK__ __asm    \
